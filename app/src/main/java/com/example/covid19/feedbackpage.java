@@ -31,12 +31,11 @@ public class feedbackpage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedbackpage);
-
+        progressDialog = new ProgressDialog(this);
         init();
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog = new ProgressDialog(getApplicationContext());
                 progressDialog.setTitle("Loading");
                 progressDialog.setCanceledOnTouchOutside(false);
                 progressDialog.show();
@@ -55,7 +54,7 @@ public class feedbackpage extends AppCompatActivity {
                             email.putExtra(Intent.EXTRA_EMAIL, new String[]{to});
                             email.putExtra(Intent.EXTRA_SUBJECT, subject);
                             email.putExtra(Intent.EXTRA_TEXT, message);
-//                            email.setType("message/rfc822");
+                            email.setType("message/rfc822");
                             startActivity(Intent.createChooser(email, "Choose an Email client :"));
                         }
                     }
